@@ -11,7 +11,22 @@ datagroup: ndt_access_filter_repro_default_datagroup {
 persist_with: ndt_access_filter_repro_default_datagroup
 
 
-explore: ndt_orders {}
+# explore: ndt_orders {}
+
+explore: ndt_ndt_orders_orders {}
+
+explore: orders_3 {
+  from: orders
+  join: ndt_orders {
+    sql_on: ${orders_3.status} = ${ndt_orders.status} ;;
+    relationship: many_to_one
+    type: left_outer
+  }
+  access_filter: {
+    field: ndt_orders.status
+    user_attribute: status_ndt_test
+  }
+}
 
 explore: events {
   join: users {

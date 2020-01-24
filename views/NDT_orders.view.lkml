@@ -13,3 +13,24 @@ view: ndt_orders {
     }
 
   }
+
+view: ndt_ndt_orders_orders {
+  derived_table: {
+    explore_source: orders_3 {
+      column: status {}
+      column: created_year {}
+      column: overall_count { field: ndt_orders.count }
+      column: count {}
+    }
+  }
+  dimension: status {}
+  dimension: created_year {
+    type: date_year
+  }
+  dimension: overall_count {
+    type: number
+  }
+  dimension: count {
+    type: number
+  }
+}
