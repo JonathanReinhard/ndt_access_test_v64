@@ -56,14 +56,19 @@ explore: order_items {
 }
 
 explore: orders {
+#   always_join: [users]
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
   }
+#   access_filter: {
+#     field: status
+#     user_attribute: status_ndt_test
+#   }
   access_filter: {
-    field: status
-    user_attribute: status_ndt_test
+    field: users.id
+    user_attribute: ndt_test_user_id
   }
 }
 
