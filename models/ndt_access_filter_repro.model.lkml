@@ -61,6 +61,10 @@ explore: orders {
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
   }
+  access_filter: {
+    field: status
+    user_attribute: status_ndt_test
+  }
 }
 
 explore: orders_extended {
