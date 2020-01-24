@@ -1,6 +1,6 @@
 view: ndt_orders {
   derived_table: {
-    datagroup_trigger: ndt_access_filter_repro_default_datagroup
+#     datagroup_trigger: ndt_access_filter_repro_default_datagroup
     explore_source: orders {
       column: status {}
       column: count {}
