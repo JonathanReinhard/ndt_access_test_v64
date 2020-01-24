@@ -4,7 +4,7 @@ connection: "thelook"
 include: "/views/**/*.view"
 
 datagroup: ndt_access_filter_repro_default_datagroup {
-  sql_trigger: SELECT HOUR(NOW());;
+  sql_trigger: SELECT MINUTE(NOW());;
 #   max_cache_age: "1 hour"
 }
 
