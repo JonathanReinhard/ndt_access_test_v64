@@ -4,11 +4,14 @@ connection: "thelook"
 include: "/views/**/*.view"
 
 datagroup: ndt_access_filter_repro_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "1 hour"
+  sql_trigger: SELECT HOUR(NOW());;
+#   max_cache_age: "1 hour"
 }
 
 persist_with: ndt_access_filter_repro_default_datagroup
+
+
+explore: ndt_orders {}
 
 explore: events {
   join: users {
@@ -57,6 +60,10 @@ explore: orders {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
+  }
+  access_filter: {
+    field: status
+    user_attribute: status_ndt_test
   }
 }
 
